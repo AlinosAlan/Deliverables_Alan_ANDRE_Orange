@@ -1,56 +1,95 @@
- <img src="/src/assets/boiler.svg" alt="Project Banner Image">
+<img src="/src/assets/boiler.svg" alt="Project Banner Image">
 
-# Vite + React + Zustand State Management Technigo Boilerplate
+# Vite + React + Zustand — Technigo Boilerplate
 
-Welcome to the `technigo-zustand-boiler-plate`!
+Welcome! This project is a starter template for building React apps with **Zustand** for state management. It comes with working examples so you can learn by reading real code before writing your own.
 
-Welcome to the React Zustand Boilerplate! This repository provides a foundational setup for integrating Zustand with React, allowing you to manage state in a more straightforward and efficient manner.
+👉 [Live Demo](https://react-vite-zustand-boiler-plate.netlify.app/)
 
-## Demo
-
-[You can check out a Demo of this boilerplate here.](https://react-vite-zustand-boiler-plate.netlify.app/)
+---
 
 ## Getting Started
 
-1.  Clone the repository to your local machine.
-2.  Install the required dependencies using `npm install`.
-3.  Start the development server using `npm run dev`.
+```bash
+# 1. Clone the repo
+git clone <your-repo-url>
 
-## Navigating the Repository
+# 2. Install dependencies
+npm install
 
-### App Structure
+# 3. Start the development server
+npm run dev
+```
 
-### App Component
-
-- (`src/App.jsx`): This is the main component that renders the `Logos` and `ComponentWithStore` components.
-
-### ComponentWithStore (`src/components/ComponentWithStore.jsx`):
-
-- This component showcases how to utilize the Zustand store. It displays various data types and provides interactive elements to manipulate the state. Here's a brief overview of its functionalities:
-
-- Toggle login status.
-- Increment age.
-- Update username.
-- Add hobbies.
-- Change address.
-- Set a favorite sports team.
-
-### Zustand Store (`src/stores/storeExample.jsx`):
-
-- This is where the magic happens! The store is created using Zustand's `create` method. It contains various state properties and methods to update them. The store includes:
-
-  - App content with headings and descriptions.
-  - User's login status, age, username, hobbies, address, and favorite sports team.
-  - Methods to toggle login, increment age, update username, add hobbies, change address, and set a favorite sports team.
+Your app will be running at `http://localhost:5173`.
 
 ---
 
-Tip: Before you decide to delete all components and start from scratch, we suggest examining them closely to grasp their structure. They can act as a blueprint for your future work.
+## Project Structure
+
+```
+src/
+├── App.jsx                          ← Main entry point, routing lives here
+├── components/
+│   ├── Logos.jsx
+│   ├── ComponentWithStore.jsx       ← Example: reads & updates Zustand state
+│   ├── ComponentWithStoreTwo.jsx
+│   └── ComponentWithstoreThree.jsx
+├── pages/                           ← One file per page/route
+│   └── About.jsx                    ← Example page
+└── stores/
+    ├── useStore.jsx                  ← Main shared store
+    └── aboutStore.js                 ← Store specific to the About page
+```
+
+> **New to this?** Think of `stores/` as a shared notepad your components can all read from and write to — without having to pass data through props.
 
 ---
 
-Zustand offers a clean and efficient way to manage state in React applications. This boilerplate provides a practical example of how to use Zustand in your projects.
+## What is Zustand?
 
-We hope this guide helps you navigate and make the most out of this boilerplate.
+Zustand is a lightweight library for **state management** — a way to share data between components without prop drilling.
 
-Happy coding, Technigo students!
+```js
+// Define a store
+const useStore = create((set) => ({
+  username: "Alex",
+  setUsername: (name) => set({ username: name }),
+}));
+
+// Use it in any component
+const { username, setUsername } = useStore();
+```
+
+That's it. No boilerplate, no context providers, no reducers.
+
+---
+
+## What's Already in the Project
+
+### `ComponentWithStore`
+A working example showing how to read and update state. It lets you:
+- Toggle login status
+- Increment age
+- Update username
+- Add hobbies
+- Change address
+- Set a favourite sports team
+
+### `useStore.jsx`
+The main Zustand store. It holds all the state used by the example components. Open it to understand the pattern before creating your own store.
+
+> **Tip:** Before deleting the example components, read through them — they show exactly how the patterns work. Use them as a blueprint.
+
+---
+
+## Adding a New Page
+
+This project includes an **agent skill** that generates a new page for you automatically — component, store, CSS, and routing all included.
+
+📄 **Skill file:** `src/skills/add-page/SKILL.md`
+
+---
+
+
+Happy coding! 🚀
